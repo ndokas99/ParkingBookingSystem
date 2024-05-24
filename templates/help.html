@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block style %}
+    <style>
+        h1{
+            font-family: Algerian, serif;
+        }
+        .container p, .container ul{
+            text-align: left;
+        }
+        hr{
+            background: #9fcdff;
+        }
+    </style>
+{% endblock %}
+
+{% block title %} Help {% endblock %}
+
+{% block content %}
+    <div class="container">
+		<h1>CPBS</h1>
+        <hr>
+        <h4>Introduction</h4>
+        <p class="text-primary">Is a monitor and regulate system implemented by the Harare City Council and Traffic Safety Council of Zimbabwe to mitigate traffic congestion and road accidents.
+        The system works by allowing drivers to book for parking spots in designated car parks around the CBD of Harare.</p>
+        <br>
+        <h4>Usage</h4>
+        <p class="text-primary">The system has been implemented by splitting the CBD into 5 zones each with its allocated car park.</p>
+        <p class="text-primary">The driver is able to book for a car parking spot in a designated zone depending on the zone they which to travel to.</p>
+        <hr>
+        <h3 id="feed">Send Feedback</h3>
+		<form align="left" action="/feedback" method="POST">
+			<div class="form-group">
+				<label class="form-control-plaintext" for="contact">Contact</label>
+				<input type="text" class="form-control" id="contact" name="contact" placeholder="Enter phone number or email" required>
+				<label class="form-control-plaintext" for="msg">Message</label>
+                <textarea class="form-control" id="msg" name="msg" required></textarea>
+				<br/>
+                <center>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </center>
+			</div>
+		</form>
+	</div>
+{% endblock %}

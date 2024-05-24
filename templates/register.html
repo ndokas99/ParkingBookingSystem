@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %} Create Account {% endblock %}
+
+{% block content %}
+    <div class="container">
+		<h1>CREATE ACCOUNT</h1>
+		<hr>
+		<form align="left" action="/create" method="POST">
+			<div class="form-group">
+				<label class="form-control-plaintext" for="idNum">National ID Number</label>
+				<input type="text" class="form-control" id="idNum" name="idNum" placeholder="Enter national id number" required>
+				<label class="form-control-plaintext" for="name">First name</label>
+				<input type="text" class="form-control" id="name" name="name" placeholder="Enter first name" required>
+				<label class="form-control-plaintext" for="surname">Surname</label>
+				<input type="text" class="form-control" id="surname" name="surname" placeholder="Enter surname" required>
+                <label class="form-control-plaintext" for="email">Email(Optional)</label>
+				<input type="text" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                <label class="form-control-plaintext" for="gender">Gender</label>
+				<select class="form-control width15" id="gender" name="gender" placeholder="" required>
+                    <option value=""></option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <label class="form-control-plaintext" for="phone">Phone</label>
+				<input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number" required>
+				<label class="form-control-plaintext" for="password1">Password</label>
+				<input type="password" class="form-control" id="password1" name="password1" placeholder="Enter password" required>
+				<label class="form-control-plaintext" for="password2">Confirm Password</label>
+				<input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm password" required>
+				<br/>
+                <center>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </center>
+			</div>
+		</form>
+	</div>
+{% endblock %}

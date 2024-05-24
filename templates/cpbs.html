@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block style %}
+    <style>
+        .container{
+			text-align: center;
+			position: absolute;
+			margin: 0;
+			top: 50%;
+			transform: translate(0%, -50%);
+            width: 100%;
+            max-width: 100%;
+            padding: 0 5px 0 5px;
+		}
+        h3{
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        h3 span{
+            position: absolute;
+            left: 10px;
+        }
+        h3 span a{
+            color: white;
+        }
+        h3 span a:hover{
+            color: red;
+            text-decoration: none;
+        }
+        h2{
+            text-decoration: underline;
+        }
+        img{
+            width: 50%;
+            height: 150px;
+        }
+        .table, .table tr{
+            width: 100%;
+        }
+        .alert-item{
+            border: 1px solid grey;
+        }
+        .alert-item table{
+            width: 100%;
+        }
+        .alert-item th{
+            text-align: left;
+            color: white;
+            background-color: #343a40;
+            width: 30%;
+        }
+        .alert-item td {
+            text-align: right;
+        }
+        .last-tr th{
+            text-align: center;
+        }
+        .last-tr button{
+            color: white;
+            background: dodgerblue;
+            border-radius: 20px;
+        }
+        @media all and (max-height:480px){
+            .container{
+                position: initial;
+			    margin: 20px 0 0 0;
+			    top: unset;
+			    transform: none
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block nav %}{% endblock %}
+{% block title %} Admin {% endblock %}
+
+{% block content %}
+    <div class="bg-dark">
+        <h3>
+            <span><a href="/">Home</a></span>
+            WELCOME ADMIN</h3>
+    </div>
+    <div class="container">
+        <div>
+            <h2>Bookings</h2>
+            <div>
+                <table class="table table-dark table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Gender</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Zone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for acc in accs %}
+                        <tr>
+                            <td>{{ acc.idNumber }}</td>
+                            <td>{{ acc.name }}</td>
+                            <td>{{ acc.surname }}</td>
+                            <td>{{ acc.gender }}</td>
+                            <td>{{ acc.phone }}</td>
+                            <td>{{ acc.email }}</td>
+                            <td>{{ acc.zone }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+        <div>
+            <h2>Feedback</h2>
+            {% if feeds %}
+                {% for feed in feeds %}
+                    <div class="alert-item">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>Contact:</th>
+                                    <td>{{ feed.contact }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Message:</th>
+                                    <td>{{ feed.message }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                {% endfor %}
+            {% else %}
+                <img src="{{ url_for('static', filename='media/feedback.png') }}" alt="Feedback logo">
+                <h5 class="text-primary">There is currently no feedback right now</h5>
+            {% endif %}
+        </div>
+	</div>
+{% endblock %}
